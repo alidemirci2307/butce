@@ -163,5 +163,4 @@ const userChart = new Chart(userCtx, {
     }
 });
 </script>
-
 <?php require_once 'includes/footer.php'; ?>

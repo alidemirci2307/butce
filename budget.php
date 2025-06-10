@@ -46,14 +46,31 @@ $currentMonth = date('m');
                             </select>
                         </div>
                         
+                        <?php
                         <div class="mb-3">
                             <label for="month" class="form-label">Ay</label>
                             <select class="form-select" id="month" name="month" required>
-                                <?php for ($m = 1; $m <= 12; $m++): ?>
-                                <option value="<?= sprintf('%02d', $m) ?>" <?= $m == $currentMonth ? 'selected' : '' ?>>
-                                    <?= date('F', mktime(0, 0, 0, $m, 1)) ?>
-                                </option>
-                                <?php endfor; ?>
+                                <?php 
+                                $aylar = array(
+                                    '01' => 'Ocak',
+                                    '02' => 'Şubat',
+                                    '03' => 'Mart',
+                                    '04' => 'Nisan',
+                                    '05' => 'Mayıs', 
+                                    '06' => 'Haziran',
+                                    '07' => 'Temmuz',
+                                    '08' => 'Ağustos',
+                                    '09' => 'Eylül',
+                                    '10' => 'Ekim',
+                                    '11' => 'Kasım',
+                                    '12' => 'Aralık'
+                                );
+                                
+                                foreach ($aylar as $key => $ay): ?>
+                                    <option value="<?= $key ?>" <?= $key == sprintf('%02d', $currentMonth) ? 'selected' : '' ?>>
+                                        <?= $ay ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         

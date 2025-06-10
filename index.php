@@ -58,7 +58,7 @@ $monthlyBudget = $budgets[$currentYear][$currentMonth] ?? 0;
     <!-- Aylık Özet -->
     <div class="card mb-4">
         <div class="card-header">
-            <h5><?= date('F Y') ?> Özeti</h5>
+            <h5><?= getTurkishMonth(date('Y-m-d')) ?> Özeti</h5>
         </div>
         <div class="card-body">
             <div class="row">

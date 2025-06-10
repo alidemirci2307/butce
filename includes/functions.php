@@ -61,4 +61,24 @@ function generateMonthlyReport($expenses, $month, $year) {
     
     return $report;
 }
+
+function getTurkishMonth($date) {
+    $aylar = array(
+        'January' => 'Ocak',
+        'February' => 'Şubat',
+        'March' => 'Mart',
+        'April' => 'Nisan',
+        'May' => 'Mayıs',
+        'June' => 'Haziran',
+        'July' => 'Temmuz',
+        'August' => 'Ağustos',
+        'September' => 'Eylül',
+        'October' => 'Ekim',
+        'November' => 'Kasım',
+        'December' => 'Aralık'
+    );
+    
+    $ayIngilizce = date('F', strtotime($date));
+    return $aylar[$ayIngilizce] . ' ' . date('Y', strtotime($date));
+}
 ?>

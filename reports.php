@@ -29,31 +29,47 @@ $userAmounts = [
 <div class="container mt-4">
     <h1 class="text-center mb-4">Harcama Raporları</h1>
     
-    <!-- Rapor Filtreleme -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5>Rapor Filtrele</h5>
-        </div>
-        <div class="card-body">
-            <form method="get" class="row g-3">
+        <!-- Rapor Filtreleme -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Rapor Filtrele</h5>
+            </div>
+            <div class="card-body">
+                <form method="get" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="year" class="form-label">Yıl</label>
+                        <select class="form-select" id="year" name="year">
+                            <?php for ($y = date('Y'); $y >= 2020; $y--): ?>
+                            <option value="<?= $y ?>" <?= $y == $reportYear ? 'selected' : '' ?>><?= $y ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
                 <div class="col-md-6">
-                    <label for="year" class="form-label">Yıl</label>
-                    <select class="form-select" id="year" name="year">
-                        <?php for ($y = date('Y'); $y >= 2020; $y--): ?>
-                        <option value="<?= $y ?>" <?= $y == $reportYear ? 'selected' : '' ?>><?= $y ?></option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="month" class="form-label">Ay</label>
-                    <select class="form-select" id="month" name="month">
-                        <?php for ($m = 1; $m <= 12; $m++): ?>
-                        <option value="<?= sprintf('%02d', $m) ?>" <?= $m == $reportMonth ? 'selected' : '' ?>>
-                            <?= date('F', mktime(0, 0, 0, $m, 1)) ?>
-                        </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
+        <label for="month" class="form-label">Ay</label>
+        <select class="form-select" id="month" name="month">
+            <?php 
+            $aylar = array(
+                '01' => 'Ocak',
+                '02' => 'Şubat',
+                '03' => 'Mart',
+                '04' => 'Nisan',
+                '05' => 'Mayıs',
+                '06' => 'Haziran',
+                '07' => 'Temmuz',
+                '08' => 'Ağustos',
+                '09' => 'Eylül',
+                '10' => 'Ekim',
+                '11' => 'Kasım',
+                '12' => 'Aralık'
+            );
+            
+            foreach ($aylar as $key => $ay): ?>
+                <option value="<?= $key ?>" <?= $key == sprintf('%02d', $reportMonth) ? 'selected' : '' ?>>
+                    <?= $ay ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Raporu Göster</button>
                 </div>

@@ -45,8 +45,7 @@ $currentMonth = date('m');
                                 <?php endfor; ?>
                             </select>
                         </div>
-                        
-                        <?php
+            
                         <div class="mb-3">
                             <label for="month" class="form-label">Ay</label>
                             <select class="form-select" id="month" name="month" required>
